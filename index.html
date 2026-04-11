@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Happy Birthday Franklyn 💙</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;800&family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@1,700&family=UnifrakturMaguntia&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0d2a6e;
+  --blue:#1a56ff;
+  --mid:#3a7bd5;
+  --light:#b8d4f0;
+  --pale:#ddeeff;
+  --cream:#f5f0e8;
+  --paper:#faf7f1;
+  --white:#ffffff;
+  --black:#0c0c0c;
+  --yellow:#f5e642;
+  --pink:#e8b4d0;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--pale);color:var(--black);font-family:'Space Grotesk',sans-serif;overflow-x:hidden;}
+
+/* ══ HERO ══ */
+#hero{
+  min-height:100vh;
+  background:var(--navy);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:3rem 2rem;text-align:center;
+}
+
+/* gingham bg tile */
+#hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(180,210,240,.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(180,210,240,.12) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+
+/* newspaper texture overlay */
+#hero::after{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    0deg,transparent,transparent 22px,rgba(255,255,255,.015) 23px
+  );pointer-events:none;
+}
+
+.hero-stamp{
+  display:inline-flex;align-items:center;gap:.5rem;
+  border:2.5px solid rgba(255,255,255,.35);
+  padding:.4rem 1.1rem;
+  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);font-weight:700;
+  margin-bottom:1.8rem;
+  position:relative;z-index:4;
+  animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both;
+  background:rgba(255,255,255,.06);
+}
+.hero-stamp::before,.hero-stamp::after{
+  content:'';display:inline-block;width:6px;height:6px;
+  border-radius:50%;background:var(--light);
+}
+
+.hero-h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:800;
+  font-size:clamp(3rem,10vw,7.5rem);
+  line-height:.9;color:var(--white);
+  position:relative;z-index:4;
+  animation:popIn .7s .1s cubic-bezier(.34,1.56,.64,1) both;
+  text-shadow:0 2px 40px rgba(26,86,255,.4);
+}
+.hero-h1 .out{-webkit-text-stroke:2.5px var(--light);color:transparent;}
+.hero-h1 .acc{color:var(--light);}
+
+.hero-italic{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:clamp(1.4rem,3.5vw,2.4rem);
+  color:rgba(255,255,255,.65);margin-top:.75rem;
+  position:relative;z-index:4;
+  animation:popIn .7s .22s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+.hero-sub{
+  font-family:'Caveat',cursive;
+  font-size:clamp(1.5rem,4vw,2.5rem);
+  color:var(--light);margin-top:.5rem;
+  position:relative;z-index:4;
+  animation:popIn .7s .32s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+.scroll-hint{
+  margin-top:2rem;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.38);
+  position:relative;z-index:4;
+  animation:float 2s ease-in-out infinite,popIn .7s .45s both;
+}
+
+/* floating scrapbook elements on hero */
+.fl{position:absolute;pointer-events:none;z-index:3;}
+
+/* bow svg */
+.bow{width:54px;height:36px;}
+
+@keyframes popIn{from{opacity:0;transform:scale(.45) rotate(-6deg);}to{opacity:1;transform:scale(1) rotate(0);}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+@keyframes wobble{0%,100%{transform:rotate(-5deg);}50%{transform:rotate(5deg);}}
+@keyframes spin{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+@keyframes flk{0%{transform:scaleX(1) scaleY(1) rotate(-2deg);}33%{transform:scaleX(.87) scaleY(1.08) rotate(1.5deg);}66%{transform:scaleX(1.07) scaleY(.93) rotate(-1deg);}100%{transform:scaleX(.95) scaleY(1.06) rotate(2deg);}}
+
+/* ══ TICKER ══ */
+.ticker{
+  background:var(--light);
+  border-top:3px solid var(--navy);border-bottom:3px solid var(--navy);
+  padding:.55rem 0;overflow:hidden;white-space:nowrap;
+}
+.ticker-inner{display:inline-flex;gap:2.5rem;animation:tick 16s linear infinite;}
+.ticker-item{font-weight:700;font-size:.9rem;color:var(--navy);display:flex;align-items:center;gap:.6rem;font-family:'Caveat',cursive;font-size:1.05rem;}
+.tdot{width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;}
+@keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ══ BALLOONS ══ */
+#balloons{
+  position:relative;height:52vh;
+  background:var(--paper);
+  border-bottom:3px solid var(--navy);overflow:hidden;
+}
+#balloonCanvas{position:absolute;inset:0;width:100%;height:100%;}
+.bal-label{
+  position:absolute;bottom:1.75rem;left:50%;transform:translateX(-50%);
+  font-family:'Caveat',cursive;font-size:clamp(1.3rem,4vw,2.2rem);
+  color:var(--navy);white-space:nowrap;z-index:5;
+  background:var(--pink);padding:.35rem 1.4rem;
+  border:2.5px solid var(--navy);border-radius:100px;
+  box-shadow:3px 3px 0 var(--navy);
+}
+
+/* ══ COLLAGE SECTION WRAPPER ══ */
+.section-bg-pale{background:var(--pale);}
+.section-bg-paper{background:var(--paper);}
+.section-bg-navy{background:var(--navy);}
+
+/* ══ ROADMAP ══ */
+#roadmap{
+  padding:5rem 1.5rem 6rem;
+  background:var(--paper);
+  position:relative;overflow:hidden;
+}
+
+/* gingham strip top */
+#roadmap::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:12px;
+  background:repeating-linear-gradient(90deg,var(--light) 0,var(--light) 14px,var(--pale) 14px,var(--pale) 28px);
+  border-bottom:2px solid var(--navy);
+}
+
+.eyebrow{
+  display:block;text-align:center;
+  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  color:var(--mid);margin-bottom:.6rem;margin-top:1rem;
+  position:relative;z-index:2;
+}
+
+.sec-head{
+  font-family:'Space Grotesk',sans-serif;font-weight:800;
+  font-size:clamp(2rem,6vw,4.2rem);text-align:center;line-height:1;
+  margin-bottom:3.5rem;position:relative;z-index:2;
+}
+.sec-head .out{-webkit-text-stroke:2.5px var(--navy);color:transparent;}
+.sec-head .col{color:var(--blue);}
+
+/* scribble underline */
+.scru{display:inline-block;position:relative;}
+.scru::after{content:'';position:absolute;left:0;bottom:-5px;width:100%;height:7px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10'%3E%3Cpath d='M0,7 Q25,2 50,7 T100,7 T150,7 T200,7' stroke='%231a56ff' stroke-width='3' fill='none'/%3E%3C/svg%3E") center/contain no-repeat;}
+
+.road-wrap{max-width:720px;margin:0 auto;position:relative;z-index:2;}
+.road-line{position:absolute;left:50%;top:0;bottom:0;width:0;border-left:3px dashed rgba(26,86,255,.22);transform:translateX(-50%);}
+
+.road-item{
+  display:grid;grid-template-columns:1fr 62px 1fr;
+  align-items:center;margin-bottom:1.75rem;
+  opacity:0;transform:translateY(22px);
+  transition:opacity .5s,transform .5s;
+}
+.road-item.vis{opacity:1;transform:translateY(0);}
+.road-item.L .rc{grid-column:1;text-align:right;} .road-item.L .rn{grid-column:2;} .road-item.L .re{grid-column:3;}
+.road-item.R .re{grid-column:1;} .road-item.R .rn{grid-column:2;} .road-item.R .rc{grid-column:3;text-align:left;}
+
+.rn{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--navy);color:var(--white);
+  font-weight:800;font-size:.95rem;
+  display:flex;align-items:center;justify-content:center;
+  border:2.5px solid var(--navy);box-shadow:3px 3px 0 var(--navy);
+  justify-self:center;z-index:3;position:relative;flex-shrink:0;
+}
+
+/* stamp-style cards */
+.rc{
+  background:var(--white);
+  border:2px solid var(--navy);
+  border-radius:4px;
+  padding:.8rem .95rem;
+  box-shadow:3px 3px 0 var(--navy);
+  margin:0 .4rem;
+  position:relative;
+}
+/* stamp perforations */
+.rc::before{
+  content:'';position:absolute;top:-1px;left:0;right:0;height:1px;
+  background:repeating-linear-gradient(90deg,transparent,transparent 4px,var(--navy) 4px,var(--navy) 8px);
+}
+.rc::after{
+  content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;
+  background:repeating-linear-gradient(90deg,transparent,transparent 4px,var(--navy) 4px,var(--navy) 8px);
+}
+.rc p{font-size:.85rem;line-height:1.55;color:var(--navy);}
+.rc .badge{display:block;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);font-weight:700;margin-bottom:.3rem;}
+
+.road-item.star .rn{background:var(--light);color:var(--navy);width:62px;height:62px;font-size:1.3rem;box-shadow:4px 4px 0 var(--navy);}
+.road-item.star .rc{background:var(--navy);box-shadow:5px 5px 0 rgba(0,0,0,.35);}
+.road-item.star .rc p{font-family:'Caveat',cursive;font-size:1.2rem;color:var(--white);font-weight:700;}
+.road-item.star .rc .badge{color:var(--light);}
+
+/* ══ POLAROIDS ══ */
+#polaroids{
+  padding:5rem 1.5rem;
+  background:var(--navy);
+  border-top:3px solid var(--navy);border-bottom:3px solid var(--navy);
+  position:relative;overflow:hidden;
+}
+
+#polaroids::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(184,212,240,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(184,212,240,.07) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+
+#polaroids .sec-head{color:var(--white);}
+#polaroids .sec-head .out{-webkit-text-stroke:2.5px rgba(255,255,255,.5);}
+#polaroids .eyebrow{color:var(--light);}
+
+.pol-row{display:flex;flex-wrap:wrap;gap:1.75rem;justify-content:center;position:relative;z-index:2;max-width:900px;margin:0 auto;}
+
+.pol{
+  background:var(--white);padding:10px 10px 44px;
+  border:2px solid rgba(0,0,0,.25);
+  box-shadow:5px 5px 0 rgba(0,0,0,.35);
+  width:148px;
+  transform:translateY(40px) rotate(var(--rot));opacity:0;
+  transition:opacity .5s,transform .65s cubic-bezier(.34,1.56,.64,1);
+  position:relative;
+}
+.pol.vis{opacity:1;transform:translateY(0) rotate(var(--rot));}
+.pol:nth-child(1){--rot:-5deg;} .pol:nth-child(2){--rot:3.5deg;} .pol:nth-child(3){--rot:-2deg;}
+.pol:nth-child(4){--rot:6deg;} .pol:nth-child(5){--rot:-4deg;}
+
+/* washi tape on top of polaroids */
+.pol::before{
+  content:'';position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:48px;height:18px;background:rgba(184,212,240,.55);border-radius:2px;
+}
+
+.pol-pic{width:100%;aspect-ratio:1;background:var(--pale);display:flex;align-items:center;justify-content:center;font-size:2.6rem;border:1px solid rgba(0,0,0,.08);}
+.pol-cap{font-family:'Caveat',cursive;font-size:1rem;font-weight:700;text-align:center;margin-top:.5rem;color:var(--navy);line-height:1.2;}
+
+/* ══ LETTER ══ */
+#letter{
+  padding:6rem 1.5rem;
+  background:var(--pale);
+  position:relative;overflow:hidden;
+}
+
+#letter::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:10px;
+  background:repeating-linear-gradient(90deg,var(--light) 0,var(--light) 12px,var(--pale) 12px,var(--pale) 24px);
+  border-bottom:2px solid rgba(13,42,110,.2);
+}
+
+.letter-wrap{max-width:680px;margin:0 auto;position:relative;z-index:2;}
+
+.letter-card{
+  background:var(--white);
+  border:2.5px solid var(--navy);
+  border-radius:6px;
+  padding:2.5rem 2.5rem 2rem;
+  box-shadow:6px 6px 0 var(--navy);
+  position:relative;
+}
+
+/* washi tape label */
+.letter-card::before{
+  content:'for franklyn 💙';
+  position:absolute;top:-16px;left:32px;
+  font-family:'Caveat',cursive;font-weight:700;font-size:.85rem;
+  background:var(--pink);color:var(--navy);
+  padding:.3rem 1rem;border:2px solid var(--navy);border-radius:3px;
+  transform:rotate(-2deg);
+  box-shadow:2px 2px 0 var(--navy);
+}
+
+/* ruled lines */
+.letter-card::after{
+  content:'';position:absolute;inset:2.5rem .5rem;
+  background:repeating-linear-gradient(transparent,transparent 31px,rgba(26,86,255,.08) 32px);
+  pointer-events:none;
+}
+
+.ll{font-size:1rem;line-height:1.9;color:var(--navy);margin-bottom:.3rem;
+  opacity:0;transform:translateX(-18px);transition:opacity .5s,transform .5s;position:relative;z-index:1;}
+.ll.vis{opacity:1;transform:translateX(0);}
+
+.ls{font-family:'Caveat',cursive;font-size:2rem;color:var(--blue);font-weight:700;
+  margin-top:1.5rem;display:block;
+  opacity:0;transform:translateX(-18px);transition:opacity .5s .3s,transform .5s .3s;position:relative;z-index:1;}
+.ls.vis{opacity:1;transform:translateX(0);}
+
+/* ══ CANDLE ══ */
+#candle{
+  padding:6rem 1.5rem 8rem;
+  background:var(--navy);
+  text-align:center;position:relative;overflow:hidden;
+}
+
+/* starry dots */
+#candle::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.18) 1px,transparent 1px);
+  background-size:34px 34px;
+}
+
+.c-ey{display:block;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:700;color:var(--light);margin-bottom:.6rem;position:relative;z-index:2;}
+.c-h{font-family:'Space Grotesk',sans-serif;font-weight:800;
+  font-size:clamp(2rem,6vw,4.5rem);color:var(--white);line-height:1;
+  margin-bottom:3rem;position:relative;z-index:2;}
+.c-h span{color:var(--light);}
+
+.candle-stage{display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;margin-bottom:2.5rem;}
+
+.fl-outer{width:30px;height:54px;position:relative;margin-bottom:-2px;animation:flk 1.3s ease-in-out infinite alternate;transform-origin:bottom center;}
+.fl-core{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,#fff 0%,#f5e642 35%,#ff7a35 65%,transparent 100%);border-radius:50% 50% 25% 25%;filter:blur(1.5px);}
+.fl-in{position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:12px;height:20px;background:radial-gradient(ellipse at 50% 100%,#fff 0%,rgba(255,255,255,.5) 100%);border-radius:50% 50% 25% 25%;}
+
+.wick-el{width:2px;height:12px;background:#888;position:relative;z-index:2;}
+
+.candle-body{
+  width:50px;height:115px;
+  background:linear-gradient(145deg,#e8ecf8 0%,#c5d0e8 40%,#9badd4 100%);
+  border-radius:6px 6px 3px 3px;border:2px solid rgba(13,42,110,.3);
+  position:relative;box-shadow:0 0 40px 15px rgba(184,212,240,.12),4px 4px 0 rgba(0,0,0,.4);
+}
+.candle-body::after{content:'';position:absolute;top:0;left:10px;width:5px;height:100%;background:rgba(0,0,0,.06);border-radius:4px;}
+.wax{position:absolute;top:-4px;right:9px;width:9px;height:15px;background:rgba(200,215,240,.8);border-radius:50%;}
+
+.c-prayer{font-family:'Caveat',cursive;font-size:clamp(1.3rem,3vw,2rem);color:rgba(255,255,255,.75);max-width:420px;margin:0 auto;line-height:1.75;position:relative;z-index:2;}
+
+/* ══ SCATTERED SCRAPBOOK DECO ELEMENTS ══ */
+.deco{position:absolute;pointer-events:none;z-index:3;}
+
+/* bow shape in CSS */
+.bow-el{display:inline-block;}
+
+/* collage clip strips */
+.clip-strip{
+  position:absolute;
+  font-family:'Caveat',cursive;font-size:.78rem;font-weight:700;
+  background:var(--paper);border:1.5px solid var(--navy);
+  padding:.25rem .6rem;color:var(--navy);
+  box-shadow:2px 2px 0 var(--navy);
+  pointer-events:none;z-index:3;
+  opacity:.75;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ MUSIC PLAYER ══════════ -->
+<div id="music-player">
+  <button id="music-btn" aria-label="Play music" title="Play music">
+    <svg id="play-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="6,4 20,12 6,20" fill="white"/>
+    </svg>
+    <svg id="pause-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+      <rect x="5" y="4" width="4" height="16" rx="1" fill="white"/>
+      <rect x="15" y="4" width="4" height="16" rx="1" fill="white"/>
+    </svg>
+    <div id="music-ripple"></div>
+  </button>
+  <div id="music-label">
+    <span id="music-caption">some tunes for the blue 💙</span>
+    <span id="music-status">tap to play</span>
+  </div>
+</div>
+
+<style>
+#music-player {
+  position: fixed;
+  top: 1.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  background: rgba(13, 42, 110, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(184, 212, 240, 0.35);
+  border-radius: 100px;
+  padding: .45rem .9rem .45rem .45rem;
+  box-shadow: 0 4px 28px rgba(26,86,255,.25), 0 1px 0 rgba(255,255,255,.06) inset;
+  transition: box-shadow .3s;
+  cursor: default;
+  user-select: none;
+}
+#music-player:hover { box-shadow: 0 6px 36px rgba(26,86,255,.38), 0 1px 0 rgba(255,255,255,.08) inset; }
+
+#music-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--blue, #1a56ff);
+  border: 2px solid rgba(255,255,255,.22);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: transform .15s, background .2s;
+  flex-shrink: 0;
+  padding: 0;
+}
+#music-btn:hover { transform: scale(1.1); background: #2d68ff; }
+#music-btn:active { transform: scale(.95); }
+#music-btn svg { width: 16px; height: 16px; position: relative; z-index: 2; }
+
+#music-ripple {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: rgba(255,255,255,.18);
+  transform: scale(0); opacity: 0;
+  transition: transform .5s, opacity .5s;
+}
+#music-btn.playing #music-ripple {
+  animation: ripplePulse 1.8s ease-out infinite;
+}
+@keyframes ripplePulse {
+  0%   { transform: scale(0);   opacity: .5; }
+  100% { transform: scale(2.4); opacity: 0;  }
+}
+
+#music-label {
+  display: flex; flex-direction: column; gap: .08rem;
+}
+#music-caption {
+  font-family: 'Caveat', cursive;
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--light, #b8d4f0);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+#music-status {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .62rem; letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(184, 212, 240, .5);
+  white-space: nowrap;
+  transition: color .3s;
+}
+#music-btn.playing ~ #music-label #music-status {
+  color: rgba(184, 212, 240, .85);
+}
+
+/* Equaliser bars shown when playing */
+#eq-bars {
+  display: none;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+  margin-left: 2px;
+}
+#music-btn.playing ~ #music-label ~ #eq-bars { display: flex; }
+#eq-bars span {
+  display: block; width: 3px; border-radius: 2px;
+  background: rgba(184,212,240,.7);
+  animation: eqBar 0s ease-in-out infinite alternate;
+}
+#eq-bars span:nth-child(1){ height:6px;  animation-duration:.55s; animation-delay:0s; }
+#eq-bars span:nth-child(2){ height:12px; animation-duration:.4s;  animation-delay:.1s; }
+#eq-bars span:nth-child(3){ height:9px;  animation-duration:.65s; animation-delay:.05s; }
+#eq-bars span:nth-child(4){ height:14px; animation-duration:.5s;  animation-delay:.2s; }
+#eq-bars span:nth-child(5){ height:7px;  animation-duration:.45s; animation-delay:.15s; }
+@keyframes eqBar { from { transform: scaleY(.35); } to { transform: scaleY(1); } }
+</style>
+
+<audio id="bg-audio" loop preload="none">
+  <!-- 🎵 Drop your song file/URL here — supports mp3, ogg, wav -->
+  <source src="./Billie Eilish - BLUE (Official Lyric Video) - BillieEilishVEVO (youtube).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+(function(){
+  const audio  = document.getElementById('bg-audio');
+  const btn    = document.getElementById('music-btn');
+  const status = document.getElementById('music-status');
+  const playIc = document.getElementById('play-icon');
+  const pausIc = document.getElementById('pause-icon');
+
+  audio.volume = 0.6;
+
+  // Inject EQ bars after label
+  const eqEl = document.createElement('div');
+  eqEl.id = 'eq-bars';
+  eqEl.innerHTML = '<span></span><span></span><span></span><span></span><span></span>';
+  document.getElementById('music-player').appendChild(eqEl);
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play().then(() => {
+        btn.classList.add('playing');
+        playIc.style.display = 'none';
+        pausIc.style.display = '';
+        status.textContent = 'now playing ♪';
+      }).catch(() => {
+        status.textContent = 'could not play :(';
+      });
+    } else {
+      audio.pause();
+      btn.classList.remove('playing');
+      playIc.style.display = '';
+      pausIc.style.display = 'none';
+      status.textContent = 'tap to play';
+    }
+  });
+
+  // Sync if audio ends unexpectedly (non-looping fallback)
+  audio.addEventListener('ended', () => {
+    btn.classList.remove('playing');
+    playIc.style.display = '';
+    pausIc.style.display = 'none';
+    status.textContent = 'tap to play';
+  });
+})();
+</script>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+
+  <!-- Scrapbook floating deco -->
+
+  <!-- Star (fabric star like reference) -->
+  <div class="deco" style="top:7%;left:6%;animation:wobble 3.5s ease-in-out infinite;">
+    <svg width="72" height="72" viewBox="0 0 72 72">
+      <path d="M36 6 L44 26 L66 26 L49 40 L55 62 L36 49 L17 62 L23 40 L6 26 L28 26 Z" fill="#b8d4f0" stroke="var(--navy)" stroke-width="2"/>
+      <path d="M36 14 L42 28 L57 28 L45 37 L49 52 L36 44 L23 52 L27 37 L15 28 L30 28 Z" fill="rgba(255,255,255,.3)"/>
+    </svg>
+  </div>
+
+  <!-- Bow top right -->
+  <div class="deco" style="top:10%;right:8%;animation:float 2.8s ease-in-out infinite;">
+    <svg width="70" height="46" viewBox="0 0 70 46">
+      <path d="M35,23 Q20,10 8,6 Q4,14 10,20 Q20,26 35,23Z" fill="#0d2a6e" stroke="#0d2a6e" stroke-width="1"/>
+      <path d="M35,23 Q50,10 62,6 Q66,14 60,20 Q50,26 35,23Z" fill="#0d2a6e" stroke="#0d2a6e" stroke-width="1"/>
+      <path d="M35,23 Q20,36 10,42 Q6,34 12,28 Q22,22 35,23Z" fill="#1a3a8a" stroke="#0d2a6e" stroke-width="1"/>
+      <path d="M35,23 Q50,36 60,42 Q64,34 58,28 Q48,22 35,23Z" fill="#1a3a8a" stroke="#0d2a6e" stroke-width="1"/>
+      <ellipse cx="35" cy="23" rx="5" ry="5" fill="#2a4faa"/>
+    </svg>
+  </div>
+
+  <!-- Stamp ticket bottom left -->
+  <div class="deco" style="bottom:20%;left:5%;animation:wobble 4s ease-in-out infinite;transform:rotate(-8deg);">
+    <svg width="80" height="52" viewBox="0 0 80 52">
+      <rect x="3" y="3" width="74" height="46" rx="3" fill="var(--pale)" stroke="var(--navy)" stroke-width="2" stroke-dasharray="5 3"/>
+      <text x="40" y="22" text-anchor="middle" font-family="Caveat,cursive" font-size="10" font-weight="700" fill="var(--navy)">ADMIT ONE</text>
+      <text x="40" y="36" text-anchor="middle" font-family="Caveat,cursive" font-size="8" fill="var(--mid)">★ FRANKLYN ★</text>
+    </svg>
+  </div>
+
+  <!-- Small gingham patch right side -->
+  <div class="deco" style="bottom:22%;right:5%;animation:float 3.2s ease-in-out infinite;transform:rotate(6deg);">
+    <svg width="64" height="64" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="6" fill="var(--pale)"/>
+      <line x1="0" y1="16" x2="64" y2="16" stroke="var(--light)" stroke-width="1.5"/>
+      <line x1="0" y1="32" x2="64" y2="32" stroke="var(--light)" stroke-width="1.5"/>
+      <line x1="0" y1="48" x2="64" y2="48" stroke="var(--light)" stroke-width="1.5"/>
+      <line x1="16" y1="0" x2="16" y2="64" stroke="var(--light)" stroke-width="1.5"/>
+      <line x1="32" y1="0" x2="32" y2="64" stroke="var(--light)" stroke-width="1.5"/>
+      <line x1="48" y1="0" x2="48" y2="64" stroke="var(--light)" stroke-width="1.5"/>
+      <rect width="64" height="64" rx="6" fill="none" stroke="var(--navy)" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <!-- Small cross sparkle top centre-right -->
+  <div class="deco" style="top:20%;right:22%;animation:spin 8s linear infinite;">
+    <svg width="32" height="32" viewBox="0 0 32 32">
+      <line x1="16" y1="2" x2="16" y2="30" stroke="var(--light)" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="2" y1="16" x2="30" y2="16" stroke="var(--light)" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- Moon stamp top left -->
+  <div class="deco" style="top:22%;left:20%;animation:float 3.5s 1s ease-in-out infinite;">
+    <svg width="48" height="48" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="20" fill="none" stroke="rgba(184,212,240,.45)" stroke-width="2" stroke-dasharray="4 3"/>
+      <path d="M28,10 Q18,14 18,24 Q18,34 28,38 Q16,38 12,28 Q8,18 18,12 Q22,10 28,10Z" fill="rgba(184,212,240,.3)"/>
+    </svg>
+  </div>
+
+  <!-- Text clip "everything happens for a reason" -->
+  <div class="deco clip-strip" style="bottom:32%;left:4%;transform:rotate(-6deg);opacity:.6;font-size:.72rem;">everything happens for a reason</div>
+  <div class="deco clip-strip" style="top:35%;right:3%;transform:rotate(4deg);font-size:.68rem;">look up, you'll see the stars ✦</div>
+
+  <!-- Main content -->
+  <div class="hero-stamp">✦ &nbsp; 26 &nbsp; ✦</div>
+  <h1 class="hero-h1">
+    HAPPY<br>
+    <span class="acc">BIRTHDAY</span><br>
+    <span class="out">BABYYYYY</span>
+  </h1>
+  <p class="hero-italic">My Frankylnnnnnn</p>
+  <p class="hero-sub">💙 it's your day, chief</p>
+  <p class="scroll-hint">↓ scroll it down ↓</p>
+
+  <!-- bg scribble lines -->
+  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+    <path d="M0,130 Q300,90 600,140 T1200,110" stroke="rgba(184,212,240,.1)" stroke-width="2" fill="none"/>
+    <path d="M0,420 Q250,380 550,425 T1100,400 T1200,420" stroke="rgba(184,212,240,.07)" stroke-width="1.5" fill="none"/>
+    <path d="M0,700 Q400,660 750,705 T1200,680" stroke="rgba(184,212,240,.06)" stroke-width="1.5" fill="none"/>
+    <text x="920" y="620" font-family="Caveat,cursive" font-size="22" fill="rgba(184,212,240,.14)" transform="rotate(8,920,620)">it's ur day!!</text>
+    <text x="30" y="640" font-family="Caveat,cursive" font-size="20" fill="rgba(184,212,240,.12)" transform="rotate(-6,30,640)">love u man 💙</text>
+  </svg>
+</section>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item"><span class="tdot"></span>Happy Birthday Franklyn</span>
+    <span class="ticker-item"><span class="tdot" style="background:var(--mid);"></span>You deserve everything good</span>
+    <span class="ticker-item"><span class="tdot" style="background:var(--pink);border:1px solid var(--navy);"></span>My favourite person</span>
+    <span class="ticker-item"><span class="tdot"></span>Another year, another W</span>
+    <span class="ticker-item"><span class="tdot" style="background:var(--mid);"></span>My Frankylnnnnnn 💙</span>
+    <span class="ticker-item"><span class="tdot" style="background:var(--pink);border:1px solid var(--navy);"></span>The realest one</span>
+    <span class="ticker-item"><span class="tdot"></span>Happy Birthday Franklyn</span>
+    <span class="ticker-item"><span class="tdot" style="background:var(--mid);"></span>You deserve everything good</span>
+    <span class="ticker-item"><span class="tdot" style="background:var(--pink);border:1px solid var(--navy);"></span>My favourite person</span>
+    <span class="ticker-item"><span class="tdot"></span>Another year, another W</span>
+    <span class="ticker-item"><span class="tdot" style="background:var(--mid);"></span>My Frankylnnnnnn 💙</span>
+    <span class="ticker-item"><span class="tdot" style="background:var(--pink);border:1px solid var(--navy);"></span>The realest one</span>
+  </div>
+</div>
+
+<!-- ══ BALLOONS ══ -->
+<section id="balloons">
+  <canvas id="balloonCanvas"></canvas>
+  <!-- scrapbook deco in balloon section -->
+  <div style="position:absolute;top:12%;left:4%;pointer-events:none;z-index:4;transform:rotate(-10deg);opacity:.5;">
+    <svg width="50" height="32" viewBox="0 0 50 32">
+      <path d="M25,16 Q14,7 5,4 Q3,10 7,14 Q14,18 25,16Z" fill="var(--navy)"/>
+      <path d="M25,16 Q36,7 45,4 Q47,10 43,14 Q36,18 25,16Z" fill="var(--navy)"/>
+      <path d="M25,16 Q14,25 7,28 Q5,22 9,18 Q16,14 25,16Z" fill="#1a3a8a"/>
+      <path d="M25,16 Q36,25 43,28 Q45,22 41,18 Q34,14 25,16Z" fill="#1a3a8a"/>
+      <ellipse cx="25" cy="16" rx="4" ry="4" fill="#2a4faa"/>
+    </svg>
+  </div>
+  <div style="position:absolute;top:8%;right:5%;pointer-events:none;z-index:4;opacity:.45;transform:rotate(5deg);">
+    <svg width="48" height="28" viewBox="0 0 48 28">
+      <rect x="2" y="2" width="44" height="24" rx="3" fill="var(--pale)" stroke="var(--navy)" stroke-width="1.5" stroke-dasharray="4 2.5"/>
+      <text x="24" y="16" text-anchor="middle" font-family="Caveat,cursive" font-size="8" font-weight="700" fill="var(--navy)">ADMIT ONE</text>
+    </svg>
+  </div>
+  <div class="bal-label">🎈 Go off! It's his day!!</div>
+</section>
+
+<!-- ══ ROADMAP ══ -->
+<section id="roadmap">
+  <!-- scattered clips -->
+  <div class="clip-strip" style="top:6%;right:4%;transform:rotate(5deg);">you are SO loved ✦</div>
+  <div class="clip-strip" style="top:18%;left:2%;transform:rotate(-7deg);">the real MVP 💙</div>
+  <div class="clip-strip" style="bottom:8%;right:3%;transform:rotate(4deg);">look up, you'll see stars</div>
+
+  <!-- tiny bow deco -->
+  <div class="deco" style="top:5%;left:50%;transform:translateX(-50%);">
+    <svg width="50" height="32" viewBox="0 0 50 32">
+      <path d="M25,16 Q14,7 5,4 Q3,10 7,14 Q14,18 25,16Z" fill="var(--pink)" stroke="var(--navy)" stroke-width="1"/>
+      <path d="M25,16 Q36,7 45,4 Q47,10 43,14 Q36,18 25,16Z" fill="var(--pink)" stroke="var(--navy)" stroke-width="1"/>
+      <path d="M25,16 Q14,25 7,28 Q5,22 9,18 Q16,14 25,16Z" fill="#d4a0bc" stroke="var(--navy)" stroke-width="1"/>
+      <path d="M25,16 Q36,25 43,28 Q45,22 41,18 Q34,14 25,16Z" fill="#d4a0bc" stroke="var(--navy)" stroke-width="1"/>
+      <ellipse cx="25" cy="16" rx="4" ry="4" fill="var(--pink)" stroke="var(--navy)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <span class="eyebrow">the countdown 🔢</span>
+  <h2 class="sec-head">20 things I <span class="col"><span class="scru">love</span></span><br>about <span class="out">you</span></h2>
+
+  <div class="road-wrap">
+    <div class="road-line"></div>
+
+    <div class="road-item L"><div class="rc"><span class="badge">No. 20</span><p>You show up even when it's inconvenient. That kind of loyalty? Rare in these streets.</p></div><div class="rn">20</div><div class="re"></div></div>
+    <div class="road-item R"><div class="re"></div><div class="rn">19</div><div class="rc"><span class="badge">No. 19</span><p>Your sense of humour hits different. You make the most boring situations actually funny.</p></div></div>
+    <div class="road-item L"><div class="rc"><span class="badge">No. 18</span><p>You never make people feel small. There's a warmth in the way you talk to everyone.</p></div><div class="rn">18</div><div class="re"></div></div>
+    <div class="road-item R"><div class="re"></div><div class="rn">17</div><div class="rc"><span class="badge">No. 17</span><p>You actually listen when someone is talking. Like actually, genuinely listen. That's a superpower.</p></div></div>
+    <div class="road-item L"><div class="rc"><span class="badge">No. 16</span><p>The way you go hard for your goals quietly — no noise, just results. Respect on a thousand.</p></div><div class="rn">16</div><div class="re"></div></div>
+    <div class="road-item R"><div class="re"></div><div class="rn">15</div><div class="rc"><span class="badge">No. 15</span><p>You remember small things people mention in passing. You actually care. That's rare.</p></div></div>
+    <div class="road-item L"><div class="rc"><span class="badge">No. 14</span><p>Your opinions are always well-thought-out. You don't just form takes — you reason them through.</p></div><div class="rn">14</div><div class="re"></div></div>
+    <div class="road-item R"><div class="re"></div><div class="rn">13</div><div class="rc"><span class="badge">No. 13</span><p>You are unbelievably consistent. Same Franklyn on the highs, same on the lows. Grounded for real.</p></div></div>
+    <div class="road-item L"><div class="rc"><span class="badge">No. 12</span><p>The way you handle pressure silently — no complaining, no drama. You just move. Legendary.</p></div><div class="rn">12</div><div class="re"></div></div>
+    <div class="road-item R"><div class="re"></div><div class="rn">11</div><div class="rc"><span class="badge">No. 11</span><p>You have taste. In music, in conversations, in the energy you bring into rooms. Elite calibre.</p></div></div>
+    <div class="road-item L"><div class="rc"><span class="badge">No. 10</span><p>You hold friends accountable without making them feel attacked. That's emotional intelligence at its peak.</p></div><div class="rn">10</div><div class="re"></div></div>
+    <div class="road-item R"><div class="re"></div><div class="rn">9</div><div class="rc"><span class="badge">No. 9</span><p>You never switch up based on who's in the room. The same Franklyn everywhere. That's character.</p></div></div>
+    <div class="road-item L"><div class="rc"><span class="badge">No. 8</span><p>You have an energy that makes people feel safe and comfortable. Not everyone can do that.</p></div><div class="rn">8</div><div class="re"></div></div>
+    <div class="road-item R"><div class="re"></div><div class="rn">7</div><div class="rc"><span class="badge">No. 7</span><p>Your ambition is contagious. Just being around you makes me want to lock in and level up.</p></div></div>
+    <div class="road-item L"><div class="rc"><span class="badge">No. 6</span><p>You don't run from hard conversations. You face them with grace. Rare growth right there.</p></div><div class="rn">6</div><div class="re"></div></div>
+    <div class="road-item R"><div class="re"></div><div class="rn">5</div><div class="rc"><span class="badge">No. 5</span><p>You give the best advice — honest, practical, never preachy. You say what people need with love.</p></div></div>
+    <div class="road-item L"><div class="rc"><span class="badge">No. 4</span><p>You celebrate people genuinely. No jealousy, no shade — just pure excitement for those you care about.</p></div><div class="rn">4</div><div class="re"></div></div>
+    <div class="road-item R"><div class="re"></div><div class="rn">3</div><div class="rc"><span class="badge">No. 3</span><p>You've made me laugh in moments I didn't think I could. That kind of healing — I don't take it lightly.</p></div></div>
+    <div class="road-item L"><div class="rc"><span class="badge">No. 2</span><p>You're one of those rare humans who makes everywhere better just by being present. The room always changes when Franklyn walks in.</p></div><div class="rn">2</div><div class="re"></div></div>
+    <div class="road-item R star"><div class="re"></div><div class="rn">1</div><div class="rc"><span class="badge">No. 1 — The Most Important</span><p>You are YOU. Completely, unapologetically, wonderfully YOU. And that alone — is more than enough. 💙</p></div></div>
+
+  </div>
+</section>
+
+<!-- ══ POLAROIDS ══ -->
+<section id="polaroids">
+  <div class="clip-strip" style="top:5%;left:5%;transform:rotate(-6deg);opacity:.5;color:var(--white);background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);">us, forever 💙</div>
+  <div class="clip-strip" style="top:5%;right:5%;transform:rotate(5deg);opacity:.5;color:var(--white);background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);">✦ memories ✦</div>
+
+  <span class="eyebrow">📸 polaroids</span>
+  <h2 class="sec-head" style="margin-bottom:3rem;">Us, <span style="color:var(--light);">forever</span></h2>
+
+  <div class="pol-row">
+    <div class="pol"><div class="pol-pic" style="background:var(--pale);">🤝</div><div class="pol-cap">I love you man</div></div>
+    <div class="pol"><div class="pol-pic" style="background:var(--pink);">🏆</div><div class="pol-cap">I love you man</div></div>
+    <div class="pol"><div class="pol-pic" style="background:var(--light);">🎉</div><div class="pol-cap">I love you man</div></div>
+    <div class="pol"><div class="pol-pic" style="background:#c5d8f5;">🌙</div><div class="pol-cap">I love you man</div></div>
+    <div class="pol"><div class="pol-pic" style="background:var(--pale);">💙</div><div class="pol-cap">I love you man</div></div>
+  </div>
+
+  <!-- big bow at bottom of polaroid section -->
+  <div style="display:flex;justify-content:center;margin-top:3rem;position:relative;z-index:2;opacity:.7;">
+    <svg width="90" height="58" viewBox="0 0 90 58">
+      <path d="M45,29 Q26,13 9,7 Q5,18 12,25 Q26,32 45,29Z" fill="rgba(184,212,240,.6)" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+      <path d="M45,29 Q64,13 81,7 Q85,18 78,25 Q64,32 45,29Z" fill="rgba(184,212,240,.6)" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+      <path d="M45,29 Q26,45 12,51 Q8,40 15,33 Q29,26 45,29Z" fill="rgba(150,185,225,.5)" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+      <path d="M45,29 Q64,45 78,51 Q82,40 75,33 Q61,26 45,29Z" fill="rgba(150,185,225,.5)" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+      <ellipse cx="45" cy="29" rx="6" ry="6" fill="rgba(184,212,240,.8)" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ══ LETTER ══ -->
+<section id="letter">
+  <div class="clip-strip" style="top:5%;right:6%;transform:rotate(6deg);">from Davies, with love 💙</div>
+  <div class="clip-strip" style="bottom:6%;left:5%;transform:rotate(-5deg);">open it, it's yours</div>
+
+  <span class="eyebrow" style="position:relative;z-index:2;display:block;text-align:center;margin-bottom:.6rem;">✉️ just for you</span>
+  <h2 class="sec-head" style="position:relative;z-index:2;margin-bottom:3rem;">From Davies, <span class="col">with love</span></h2>
+
+  <div class="letter-wrap">
+    <div class="letter-card">
+      <div class="ll">Franklyn,</div>
+      <div class="ll">I'm writing this because some things need to be said out loud — or at least typed and sent — before another year goes by without you knowing how much you actually mean to me.</div>
+      <div class="ll">You've been one of those constants. The kind of friend who doesn't need to announce himself, he just shows up — in the right moments, with the right energy, saying exactly the right thing.</div>
+      <div class="ll">I've watched you handle life with a kind of grace that honestly humbles me. You face things that would break other people, and you come out still yourself. Still warm. Still funny. Still you.</div>
+      <div class="ll">On your birthday, I want you to know: you are deeply, genuinely appreciated. Not for what you do — but for who you are. That's the rare thing.</div>
+      <div class="ll">This year, I'm praying for everything you've worked for to start landing. For the doors to open wide. For your joy to be full and stubborn — the kind that circumstances can't touch.</div>
+      <div class="ll">Happy birthday, chief. The world is genuinely better because you're in it. 💙</div>
+      <span class="ls">— Davies</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CANDLE ══ -->
+<section id="candle">
+  <div class="clip-strip" style="top:6%;left:5%;transform:rotate(-6deg);color:rgba(255,255,255,.7);background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);">shine bright always ✦</div>
+  <div class="clip-strip" style="top:6%;right:5%;transform:rotate(5deg);color:rgba(255,255,255,.7);background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);">your spark is forever</div>
+
+  <span class="c-ey">🕯️ one last thing</span>
+  <h2 class="c-h">Make a wish,<br><span>Franklyn.</span></h2>
+
+  <div class="candle-stage">
+    <div class="fl-outer"><div class="fl-core"></div><div class="fl-in"></div></div>
+    <div class="wick-el"></div>
+    <div class="candle-body"><div class="wax"></div></div>
+  </div>
+
+  <p class="c-prayer">I pray your spark never goes out.<br><br>Happy Birthday, my Franklyn. 💙</p>
+
+  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+    <circle cx="120" cy="120" r="3" fill="rgba(184,212,240,.5)"/><circle cx="380" cy="70" r="2" fill="rgba(245,230,66,.45)"/>
+    <circle cx="700" cy="55" r="3" fill="rgba(255,255,255,.4)"/><circle cx="1020" cy="110" r="2.5" fill="rgba(184,212,240,.5)"/>
+    <circle cx="180" cy="560" r="2" fill="rgba(255,255,255,.35)"/><circle cx="940" cy="510" r="3" fill="rgba(245,230,66,.4)"/>
+    <circle cx="580" cy="620" r="2" fill="rgba(184,212,240,.3)"/>
+    <text x="60" y="640" font-family="Caveat,cursive" font-size="20" fill="rgba(184,212,240,.12)" transform="rotate(-6,60,640)">shine bright ✦</text>
+    <text x="980" y="590" font-family="Caveat,cursive" font-size="18" fill="rgba(255,255,255,.09)" transform="rotate(5,980,590)">forever young</text>
+  </svg>
+</section>
+
+<script>
+(function(){
+/* ─── BALLOONS ─── */
+const canvas=document.getElementById('balloonCanvas');
+const ctx=canvas.getContext('2d');
+let balls=[],running=false,frame=0,last=0;
+const COLS=['#1a56ff','#b8d4f0','#e8b4d0','#3a7bd5','#0d2a6e','#7bafd4','#a0c4e8'];
+function resize(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;}
+function mk(){return{x:Math.random()*canvas.width,y:canvas.height+70,r:18+Math.random()*18,color:COLS[Math.floor(Math.random()*COLS.length)],speed:.9+Math.random()*2,sway:(Math.random()*2-1)*.85,ss:.01+Math.random()*.018,so:Math.random()*Math.PI*2,op:.8+Math.random()*.2};}
+function draw(b){
+  const sx=b.x+Math.sin(frame*b.ss+b.so)*18*b.sway;
+  ctx.save();ctx.globalAlpha=b.op;
+  ctx.beginPath();ctx.ellipse(sx,b.y,b.r,b.r*1.25,0,0,Math.PI*2);ctx.fillStyle=b.color;ctx.fill();
+  ctx.beginPath();ctx.ellipse(sx-b.r*.3,b.y-b.r*.38,b.r*.26,b.r*.17,-.6,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,.4)';ctx.fill();
+  ctx.beginPath();ctx.arc(sx,b.y+b.r*1.25,3.5,0,Math.PI*2);ctx.fillStyle=b.color;ctx.fill();
+  ctx.beginPath();ctx.moveTo(sx,b.y+b.r*1.3);ctx.lineTo(sx+Math.sin(frame*.022)*7,b.y+b.r*1.3+40);ctx.strokeStyle='rgba(0,0,0,.18)';ctx.lineWidth=1;ctx.stroke();
+  ctx.restore();
+}
+function loop(){if(!running)return;frame++;ctx.clearRect(0,0,canvas.width,canvas.height);if(frame-last>6){balls.push(mk());if(balls.length>50)balls.shift();last=frame;}balls.forEach(b=>{b.y-=b.speed;draw(b);});balls=balls.filter(b=>b.y>-100);requestAnimationFrame(loop);}
+new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting&&!running){running=true;resize();requestAnimationFrame(loop);}else if(!en.isIntersecting)running=false;}),{threshold:.1}).observe(document.getElementById('balloons'));
+window.addEventListener('resize',resize);resize();
+
+/* ─── ROAD ─── */
+const roadObs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('vis');}),{threshold:.13});
+document.querySelectorAll('.road-item').forEach(el=>roadObs.observe(el));
+
+/* ─── POLAROIDS ─── */
+const polObs=new IntersectionObserver(e=>e.forEach((en,i)=>{if(en.isIntersecting)setTimeout(()=>en.target.classList.add('vis'),i*140);}),{threshold:.1});
+document.querySelectorAll('.pol').forEach(el=>polObs.observe(el));
+
+/* ─── LETTER ─── */
+const letObs=new IntersectionObserver(e=>e.forEach((en,i)=>{if(en.isIntersecting)setTimeout(()=>en.target.classList.add('vis'),i*110);}),{threshold:.08});
+document.querySelectorAll('.ll,.ls').forEach(el=>letObs.observe(el));
+})();
+</script>
+</body>
+</html>
